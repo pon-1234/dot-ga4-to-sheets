@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ga4-to-sheets-config
+data:
+  PROJECT_ID: "your-gcp-project-id"
+  BIGQUERY_DATASET: "your-ga4-dataset-id"
+  BIGQUERY_TABLE_PREFIX: "events_"
+  SPREADSHEET_ID: "your-google-sheets-id"
+
+---
+# Cloud Function for monthly updates
+apiVersion: cloudfunctions.googleapis.com/v1
+kind: CloudFunction
+metadata:
+  name: ga4-to-sheets-monthly
+spec:
+  sourceArchiveUrl: gs://your-bucket/ga4-to-sheets.zip
+  entryPoint: monthlyUpdate
+  runtime: nodejs18
+  timeout: 540s
+  availableMemoryMb: 512
+  environmentVariables:
+    PROJECT_ID: "your-gcp-project-id"
+    BIGQUERY_DATASET: "your-ga4-dataset-id"
+    BIGQUERY_TABLE_PREFIX: "events_"
+    SPREADSHEET_ID: "your-google-sheets-id"
+    CREDENTIALS_PATH: "/tmp/service-account.json"
+  httpsTrigger: {}
+
+---
+# Cloud Function for quarterly updates
+apiVersion: cloudfunctions.googleapis.com/v1
+kind: CloudFunction
+metadata:
+  name: ga4-to-sheets-quarterly
+spec:
+  sourceArchiveUrl: gs://your-bucket/ga4-to-sheets.zip
+  entryPoint: quarterlyUpdate
+  runtime: nodejs18
+  timeout: 540s
+  availableMemoryMb: 512
+  environmentVariables:
+    PROJECT_ID: "your-gcp-project-id"
+    BIGQUERY_DATASET: "your-ga4-dataset-id"
+    BIGQUERY_TABLE_PREFIX: "events_"
+    SPREADSHEET_ID: "your-google-sheets-id"
+    CREDENTIALS_PATH: "/tmp/service-account.json"
+  httpsTrigger: {}
+
+---
+# Cloud Scheduler for monthly updates
+apiVersion: cloudscheduler.googleapis.com/v1
+kind: Job
+metadata:
+  name: ga4-to-sheets-monthly-schedule
+spec:
+  schedule: "0 9 1 * *"  # 毎月1日の9:00 AM (JST)
+  timeZone: "Asia/Tokyo"
+  httpTarget:
+    uri: "https://your-region-your-project.cloudfunctions.net/ga4-to-sheets-monthly"
+    httpMethod: POST
+    headers:
+      Content-Type: "application/json"
+
+---
+# Cloud Scheduler for quarterly updates
+apiVersion: cloudscheduler.googleapis.com/v1
+kind: Job
+metadata:
+  name: ga4-to-sheets-quarterly-schedule
+spec:
+  schedule: "0 10 1 1,4,7,10 *"  # 四半期の最初の月（1,4,7,10月）の1日 10:00 AM (JST)
+  timeZone: "Asia/Tokyo"
+  httpTarget:
+    uri: "https://your-region-your-project.cloudfunctions.net/ga4-to-sheets-quarterly"
+    httpMethod: POST
+    headers:
+      Content-Type: "application/json"

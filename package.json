@@ -1,0 +1,26 @@
+{
+  "name": "ga4-to-sheets",
+  "version": "1.0.0",
+  "description": "GA4 BigQuery data to Google Sheets automation",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "monthly": "node src/index.js monthly",
+    "quarterly": "node src/index.js quarterly",
+    "check": "node check-setup.js",
+    "dev": "node --watch src/index.js",
+    "test": "jest",
+    "deploy": "gcloud functions deploy ga4-to-sheets"
+  },
+  "dependencies": {
+    "@google-cloud/bigquery": "^7.0.0",
+    "googleapis": "^126.0.1",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

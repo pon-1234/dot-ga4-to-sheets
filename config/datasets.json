@@ -1,0 +1,44 @@
+[
+  {
+    "name": "宿泊施設 A",
+    "dataset": "analytics_330664733",
+    "tablePrefix": "events_",
+    "description": "宿泊施設A - GA4データセット: analytics_330664733",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 B",
+    "dataset": "analytics_373204008",
+    "tablePrefix": "events_",
+    "description": "宿泊施設B - GA4データセット: analytics_373204008",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 C",
+    "dataset": "analytics_417280723",
+    "tablePrefix": "events_",
+    "description": "宿泊施設C - GA4データセット: analytics_417280723",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 D",
+    "dataset": "analytics_417515239",
+    "tablePrefix": "events_",
+    "description": "宿泊施設D - GA4データセット: analytics_417515239",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 E",
+    "dataset": "analytics_473898643",
+    "tablePrefix": "events_",
+    "description": "宿泊施設E - GA4データセット: analytics_473898643",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 F",
+    "dataset": "analytics_489741404",
+    "tablePrefix": "events_",
+    "description": "宿泊施設F - GA4データセット: analytics_489741404",
+    "enabled": true
+  }
+]
