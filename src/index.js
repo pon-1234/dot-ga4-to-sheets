@@ -125,7 +125,7 @@ class AccommodationAnalyticsProcessor {
 
   formatAccommodationCVRData(cvrAnalysis) {
     const headers = [
-      '期間', 'ホテル名', 'アクティブユーザー数', 'コンバージョン数', 'CVR', 
+      '期間', '施設名', 'アクティブユーザー数', 'コンバージョン数', 'CVR', 
       'CVR（広告流入除く）', 'CVR変化率', 'CVR（広告流入除く）変化率', '説明'
     ];
     
@@ -184,7 +184,7 @@ class AccommodationAnalyticsProcessor {
 
   formatBookingFunnelData(funnelData) {
     const headers = [
-      '期間', 'ホテル名', 'HP訪問者', 'プラン選択', '予約内容入力', '個人情報入力', '予約完了',
+      '期間', '施設名', 'HP訪問者', 'プラン選択', '予約内容入力', '個人情報入力', '予約完了',
       'HP→プラン選択率', 'プラン選択→予約内容率', '予約内容→個人情報率', '個人情報→完了率',
       '全体CVR', '説明'
     ];
@@ -210,7 +210,7 @@ class AccommodationAnalyticsProcessor {
 
   formatTrafficSourceData(trafficData) {
     const headers = [
-      '期間', 'ホテル名', '流入元', 'ユーザー数', 'コンバージョン数', 'CVR', '割合', '説明'
+      '期間', '施設名', '流入元', 'ユーザー数', 'コンバージョン数', 'CVR', '割合', '説明'
     ];
     
     const rows = trafficData.map(row => [
@@ -229,7 +229,7 @@ class AccommodationAnalyticsProcessor {
 
   formatDemographicsData(demographicsData) {
     const headers = [
-      '期間', 'ホテル名', '属性タイプ', '属性値', 'ユーザー数', 'コンバージョン数', 'CVR', '割合', '説明'
+      '期間', '施設名', '属性タイプ', '属性値', 'ユーザー数', 'コンバージョン数', 'CVR', '割合', '説明'
     ];
     
     const rows = demographicsData.map(row => [
@@ -249,7 +249,7 @@ class AccommodationAnalyticsProcessor {
 
   formatTopPagesData(topPagesData) {
     const headers = [
-      '期間', 'ホテル名', 'ページパス', 'ページビュー数', 'ユニークユーザー数', '説明'
+      '期間', '施設名', 'ページパス', 'ページビュー数', 'ユニークユーザー数', '説明'
     ];
     
     const rows = topPagesData.map(row => [
@@ -282,10 +282,6 @@ class AccommodationAnalyticsProcessor {
         {
           name: 'ユーザー属性分析',
           data: this.formatDemographicsData(analysisData.user_demographics)
-        },
-        {
-          name: '人気ページ分析（TOP20）',
-          data: this.formatTopPagesData(analysisData.top_pages)
         }
       ];
 
@@ -306,7 +302,7 @@ class AccommodationAnalyticsProcessor {
 
   async createPropertyListSheet() {
     const properties = config.datasets;
-    const headers = ['ホテル名', 'BigQueryデータセット', 'テーブルプレフィックス', '説明', '有効'];
+    const headers = ['施設名', 'BigQueryデータセット', 'テーブルプレフィックス', '説明', '有効'];
     const rows = properties.map(ds => [
       ds.name,
       ds.dataset,
@@ -321,10 +317,10 @@ class AccommodationAnalyticsProcessor {
   }
 
   async createAccommodationSummary(analysisData) {
-    // 各ホテルの最新パフォーマンスを集計
+    // 各施設の最新パフォーマンスを集計
     const summary = this.generateAccommodationSummary(analysisData);
     
-    const headers = ['ホテル名', '最新CVR', '最新ユーザー数', '最新予約数', '最新月', 'パフォーマンス'];
+    const headers = ['施設名', '最新CVR', '最新ユーザー数', '最新予約数', '最新月', 'パフォーマンス'];
     const rows = Object.entries(summary).map(([propertyName, data]) => [
       propertyName,
       (data.latest_cvr * 100).toFixed(2) + '%',

@@ -1,44 +1,142 @@
 [
   {
     "name": "宿泊施設 A",
-    "dataset": "analytics_330664733",
+    "dataset": "analytics_297538385",
     "tablePrefix": "events_",
-    "description": "宿泊施設A - GA4データセット: analytics_330664733",
+    "description": "宿泊施設A - GA4データセット: analytics_297538385",
     "enabled": true
   },
   {
     "name": "宿泊施設 B",
-    "dataset": "analytics_373204008",
+    "dataset": "analytics_303521809",
     "tablePrefix": "events_",
-    "description": "宿泊施設B - GA4データセット: analytics_373204008",
+    "description": "宿泊施設B - GA4データセット: analytics_303521809",
     "enabled": true
   },
   {
     "name": "宿泊施設 C",
-    "dataset": "analytics_417280723",
+    "dataset": "analytics_307983182",
     "tablePrefix": "events_",
-    "description": "宿泊施設C - GA4データセット: analytics_417280723",
+    "description": "宿泊施設C - GA4データセット: analytics_307983182",
     "enabled": true
   },
   {
     "name": "宿泊施設 D",
-    "dataset": "analytics_417515239",
+    "dataset": "analytics_317182161",
     "tablePrefix": "events_",
-    "description": "宿泊施設D - GA4データセット: analytics_417515239",
+    "description": "宿泊施設D - GA4データセット: analytics_317182161",
     "enabled": true
   },
   {
     "name": "宿泊施設 E",
-    "dataset": "analytics_473898643",
+    "dataset": "analytics_330664733",
     "tablePrefix": "events_",
-    "description": "宿泊施設E - GA4データセット: analytics_473898643",
-    "enabled": true
+    "description": "宿泊施設E - GA4データセット: analytics_330664733",
+    "enabled": false
   },
   {
     "name": "宿泊施設 F",
+    "dataset": "analytics_345677370",
+    "tablePrefix": "events_",
+    "description": "宿泊施設F - GA4データセット: analytics_345677370",
+    "enabled": false
+  },
+  {
+    "name": "宿泊施設 G",
+    "dataset": "analytics_354360451",
+    "tablePrefix": "events_",
+    "description": "宿泊施設G - GA4データセット: analytics_354360451",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 H",
+    "dataset": "analytics_373204008",
+    "tablePrefix": "events_",
+    "description": "宿泊施設H - GA4データセット: analytics_373204008",
+    "enabled": false
+  },
+  {
+    "name": "宿泊施設 I",
+    "dataset": "analytics_377764026",
+    "tablePrefix": "events_",
+    "description": "宿泊施設I - GA4データセット: analytics_377764026",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 J",
+    "dataset": "analytics_417117660",
+    "tablePrefix": "events_",
+    "description": "宿泊施設J - GA4データセット: analytics_417117660",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 K",
+    "dataset": "analytics_417280723",
+    "tablePrefix": "events_",
+    "description": "宿泊施設K - GA4データセット: analytics_417280723",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 L",
+    "dataset": "analytics_417515239",
+    "tablePrefix": "events_",
+    "description": "宿泊施設L - GA4データセット: analytics_417515239",
+    "enabled": false
+  },
+  {
+    "name": "宿泊施設 M",
+    "dataset": "analytics_426492990",
+    "tablePrefix": "events_",
+    "description": "宿泊施設M - GA4データセット: analytics_426492990",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 N",
+    "dataset": "analytics_435381614",
+    "tablePrefix": "events_",
+    "description": "宿泊施設N - GA4データセット: analytics_435381614",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 O",
+    "dataset": "analytics_444585119",
+    "tablePrefix": "events_",
+    "description": "宿泊施設O - GA4データセット: analytics_444585119",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 P",
+    "dataset": "analytics_463551992",
+    "tablePrefix": "events_",
+    "description": "宿泊施設P - GA4データセット: analytics_463551992",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 Q",
+    "dataset": "analytics_467758700",
+    "tablePrefix": "events_",
+    "description": "宿泊施設Q - GA4データセット: analytics_467758700",
+    "enabled": true
+  },
+  {
+    "name": "宿泊施設 R",
+    "dataset": "analytics_473898643",
+    "tablePrefix": "events_",
+    "description": "宿泊施設R - GA4データセット: analytics_473898643",
+    "enabled": false
+  },
+  {
+    "name": "宿泊施設 S",
     "dataset": "analytics_489741404",
     "tablePrefix": "events_",
-    "description": "宿泊施設F - GA4データセット: analytics_489741404",
+    "description": "宿泊施設S - GA4データセット: analytics_489741404",
+    "enabled": false
+  },
+  {
+    "name": "宿泊施設 T",
+    "dataset": "analytics_489770246",
+    "tablePrefix": "events_",
+    "description": "宿泊施設T - GA4データセット: analytics_489770246",
     "enabled": true
   }
 ]
