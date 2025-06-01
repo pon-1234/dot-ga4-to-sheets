@@ -184,28 +184,42 @@ class AccommodationAnalyticsProcessor {
 
   formatBookingFunnelData(funnelData) {
     const headers = [
-      '期間', '施設名', 'HP訪問者', 'プラン選択', '予約内容入力', '個人情報入力', '予約完了',
-      'HP→プラン選択率', 'プラン選択→予約内容率', '予約内容→個人情報率', '個人情報→完了率',
-      '全体CVR', '説明'
+      '期間', '施設名', 'HP訪問者', 'プラン選択', '予約内容入力', '個人情報入力', '予約完了', '説明'
     ];
     
-    const rows = funnelData.map(row => [
-      row.period,
-      row.dataset_name,
-      row.hp_visitors || 0,
-      row.plan_selectors || 0,
-      row.booking_detail_enterers || 0,
-      row.personal_info_enterers || 0,
-      row.booking_completers || 0,
-      row.hp_to_plan_rate ? (row.hp_to_plan_rate * 100).toFixed(2) + '%' : '0.00%',
-      row.plan_to_booking_rate ? (row.plan_to_booking_rate * 100).toFixed(2) + '%' : '0.00%',
-      row.booking_to_personal_rate ? (row.booking_to_personal_rate * 100).toFixed(2) + '%' : '0.00%',
-      row.personal_to_completion_rate ? (row.personal_to_completion_rate * 100).toFixed(2) + '%' : '0.00%',
-      row.overall_conversion_rate ? (row.overall_conversion_rate * 100).toFixed(2) + '%' : '0.00%',
-      row.dataset_description
-    ]);
+    const conversionHeaders = [
+      '', '', 'HP→プラン選択率', 'プラン選択→予約内容率', '予約内容→個人情報率', '個人情報→完了率', '全体CVR', ''
+    ];
     
-    return { headers, rows };
+    const rows = [];
+    
+    funnelData.forEach(row => {
+      // 1行目：数値データ
+      rows.push([
+        row.period,
+        row.dataset_name,
+        row.hp_visitors || 0,
+        row.plan_selectors || 0,
+        row.booking_detail_enterers || 0,
+        row.personal_info_enterers || 0,
+        row.booking_completers || 0,
+        row.dataset_description
+      ]);
+      
+      // 2行目：移行率データ（分母合わせ）
+      rows.push([
+        '',
+        '移行率',
+        row.hp_to_plan_rate ? (row.hp_to_plan_rate * 100).toFixed(2) + '%' : '0.00%',
+        row.plan_to_booking_rate ? (row.plan_to_booking_rate * 100).toFixed(2) + '%' : '0.00%',
+        row.booking_to_personal_rate ? (row.booking_to_personal_rate * 100).toFixed(2) + '%' : '0.00%',
+        row.personal_to_completion_rate ? (row.personal_to_completion_rate * 100).toFixed(2) + '%' : '0.00%',
+        row.overall_conversion_rate ? (row.overall_conversion_rate * 100).toFixed(2) + '%' : '0.00%',
+        ''
+      ]);
+    });
+    
+    return { headers, rows, conversionHeaders };
   }
 
   formatTrafficSourceData(trafficData) {
@@ -282,13 +296,26 @@ class AccommodationAnalyticsProcessor {
         {
           name: 'ユーザー属性分析',
           data: this.formatDemographicsData(analysisData.user_demographics)
+        },
+        {
+          name: 'CVRピボットテーブル',
+          data: this.formatCVRPivotTable(analysisData.cvr_analysis)
+        },
+        {
+          name: 'ファネルピボットテーブル',
+          data: this.formatBookingFunnelPivotTable(analysisData.booking_funnel)
         }
       ];
 
       for (const sheet of sheets) {
         await this.sheetsService.createSheetIfNotExists(sheet.name);
         await this.sheetsService.clearSheet(sheet.name);
-        await this.sheetsService.writeToSheet(sheet.name, sheet.data.rows, sheet.data.headers);
+        
+        if (sheet.name === '予約ファネル分析' && sheet.data.conversionHeaders) {
+          await this.sheetsService.writeToSheet(sheet.name, sheet.data.rows, sheet.data.headers);
+        } else {
+          await this.sheetsService.writeToSheet(sheet.name, sheet.data.rows, sheet.data.headers);
+        }
       }
 
       await this.createPropertyListSheet();
@@ -340,6 +367,77 @@ class AccommodationAnalyticsProcessor {
     await this.sheetsService.createSheetIfNotExists('宿泊施設パフォーマンスサマリー');
     await this.sheetsService.clearSheet('宿泊施設パフォーマンスサマリー');
     await this.sheetsService.writeToSheet('宿泊施設パフォーマンスサマリー', rows, headers);
+  }
+
+  formatCVRPivotTable(cvrAnalysis) {
+    const periods = [...new Set(cvrAnalysis.basic.map(row => row.period))].sort();
+    const properties = [...new Set(cvrAnalysis.basic.map(row => row.dataset_name))].sort();
+    
+    const headers = ['施設名', ...periods];
+    const rows = [];
+    
+    properties.forEach(property => {
+      const row = [property];
+      periods.forEach(period => {
+        const data = cvrAnalysis.basic.find(d => d.dataset_name === property && d.period === period);
+        row.push(data ? (data.cvr * 100).toFixed(2) + '%' : '');
+      });
+      rows.push(row);
+    });
+    
+    return { headers, rows };
+  }
+
+  formatBookingFunnelPivotTable(funnelData) {
+    const periods = [...new Set(funnelData.map(row => row.period))].sort();
+    const properties = [...new Set(funnelData.map(row => row.dataset_name))].sort();
+    
+    const metrics = ['HP訪問者', '全体CVR', 'HP→プラン選択率', 'プラン選択→予約内容率', '予約内容→個人情報率', '個人情報→完了率'];
+    const rows = [];
+    
+    metrics.forEach(metric => {
+      const headers = ['指標', '施設名', ...periods];
+      if (rows.length === 0) {
+        rows.push(headers);
+      }
+      
+      properties.forEach(property => {
+        const row = [metric, property];
+        periods.forEach(period => {
+          const data = funnelData.find(d => d.dataset_name === property && d.period === period);
+          if (!data) {
+            row.push('');
+            return;
+          }
+          
+          let value = '';
+          switch (metric) {
+            case 'HP訪問者':
+              value = data.hp_visitors || 0;
+              break;
+            case '全体CVR':
+              value = data.overall_conversion_rate ? (data.overall_conversion_rate * 100).toFixed(2) + '%' : '0.00%';
+              break;
+            case 'HP→プラン選択率':
+              value = data.hp_to_plan_rate ? (data.hp_to_plan_rate * 100).toFixed(2) + '%' : '0.00%';
+              break;
+            case 'プラン選択→予約内容率':
+              value = data.plan_to_booking_rate ? (data.plan_to_booking_rate * 100).toFixed(2) + '%' : '0.00%';
+              break;
+            case '予約内容→個人情報率':
+              value = data.booking_to_personal_rate ? (data.booking_to_personal_rate * 100).toFixed(2) + '%' : '0.00%';
+              break;
+            case '個人情報→完了率':
+              value = data.personal_to_completion_rate ? (data.personal_to_completion_rate * 100).toFixed(2) + '%' : '0.00%';
+              break;
+          }
+          row.push(value);
+        });
+        rows.push(row);
+      });
+    });
+    
+    return { headers: rows[0], rows: rows.slice(1) };
   }
 
   generateAccommodationSummary(analysisData) {

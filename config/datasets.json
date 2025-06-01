@@ -1,142 +1,149 @@
 [
   {
-    "name": "宿泊施設 A",
+    "name": "DO-002_Dot Glamping富士山",
     "dataset": "analytics_297538385",
     "tablePrefix": "events_",
-    "description": "宿泊施設A - GA4データセット: analytics_297538385",
+    "description": "DO-002_Dot Glamping富士山 - GA4データセット: analytics_297538385",
     "enabled": true
   },
   {
-    "name": "宿泊施設 B",
+    "name": "DC-001_グランステラキャビン富士山中湖",
     "dataset": "analytics_303521809",
     "tablePrefix": "events_",
-    "description": "宿泊施設B - GA4データセット: analytics_303521809",
+    "description": "DC-001_グランステラキャビン富士山中湖 - GA4データセット: analytics_303521809",
     "enabled": true
   },
   {
-    "name": "宿泊施設 C",
+    "name": "DC-004_Dot Glamping赤穂",
     "dataset": "analytics_307983182",
     "tablePrefix": "events_",
-    "description": "宿泊施設C - GA4データセット: analytics_307983182",
+    "description": "DC-004_Dot Glamping赤穂 - GA4データセット: analytics_307983182",
     "enabled": true
   },
   {
-    "name": "宿泊施設 D",
+    "name": "DC-002_のぞみグランピング&スパ 佐久×軽井沢",
     "dataset": "analytics_317182161",
     "tablePrefix": "events_",
-    "description": "宿泊施設D - GA4データセット: analytics_317182161",
+    "description": "DC-002_のぞみグランピング&スパ 佐久×軽井沢 - GA4データセット: analytics_317182161",
     "enabled": true
   },
   {
-    "name": "宿泊施設 E",
+    "name": "DC-005_温泉グランピング WOOODS 芸北",
     "dataset": "analytics_330664733",
     "tablePrefix": "events_",
-    "description": "宿泊施設E - GA4データセット: analytics_330664733",
-    "enabled": false
+    "description": "DC-005_温泉グランピング WOOODS 芸北 - GA4データセット: analytics_330664733",
+    "enabled": true
   },
   {
-    "name": "宿泊施設 F",
+    "name": "DC-007_dots by Dot Glamping Suite 001",
     "dataset": "analytics_345677370",
     "tablePrefix": "events_",
-    "description": "宿泊施設F - GA4データセット: analytics_345677370",
-    "enabled": false
+    "description": "DC-007_dots by Dot Glamping Suite 001 - GA4データセット: analytics_345677370",
+    "enabled": true
   },
   {
-    "name": "宿泊施設 G",
+    "name": "DC-010_TOMORROW COAST",
     "dataset": "analytics_354360451",
     "tablePrefix": "events_",
-    "description": "宿泊施設G - GA4データセット: analytics_354360451",
+    "description": "DC-010_TOMORROW COAST - GA4データセット: analytics_354360451",
     "enabled": true
   },
   {
-    "name": "宿泊施設 H",
+    "name": "DC-008_Glampng Gate 針 T.R.S",
     "dataset": "analytics_373204008",
     "tablePrefix": "events_",
-    "description": "宿泊施設H - GA4データセット: analytics_373204008",
-    "enabled": false
+    "description": "DC-008_Glampng Gate 針 T.R.S - GA4データセット: analytics_373204008",
+    "enabled": true
   },
   {
-    "name": "宿泊施設 I",
+    "name": "DC-020_LUONTE 霧の高原",
     "dataset": "analytics_377764026",
     "tablePrefix": "events_",
-    "description": "宿泊施設I - GA4データセット: analytics_377764026",
+    "description": "DC-020_LUONTE 霧の高原 - GA4データセット: analytics_377764026",
     "enabled": true
   },
   {
-    "name": "宿泊施設 J",
+    "name": "DC-013_まるのもり GLAMPING with DOG",
     "dataset": "analytics_417117660",
     "tablePrefix": "events_",
-    "description": "宿泊施設J - GA4データセット: analytics_417117660",
+    "description": "DC-013_まるのもり GLAMPING with DOG - GA4データセット: analytics_417117660",
     "enabled": true
   },
   {
-    "name": "宿泊施設 K",
+    "name": "DC-039_Quvel",
     "dataset": "analytics_417280723",
     "tablePrefix": "events_",
-    "description": "宿泊施設K - GA4データセット: analytics_417280723",
+    "description": "DC-039_Quvel - GA4データセット: analytics_417280723",
     "enabled": true
   },
   {
-    "name": "宿泊施設 L",
+    "name": "DC-040_LCOResort",
     "dataset": "analytics_417515239",
     "tablePrefix": "events_",
-    "description": "宿泊施設L - GA4データセット: analytics_417515239",
-    "enabled": false
+    "description": "DC-040_LCOResort - GA4データセット: analytics_417515239",
+    "enabled": true
   },
   {
-    "name": "宿泊施設 M",
+    "name": "DC-011_slow glamping風と海と",
     "dataset": "analytics_426492990",
     "tablePrefix": "events_",
-    "description": "宿泊施設M - GA4データセット: analytics_426492990",
+    "description": "DC-011_slow glamping風と海と - GA4データセット: analytics_426492990",
     "enabled": true
   },
   {
-    "name": "宿泊施設 N",
+    "name": "DC-018_SASEBO HARIO beach walk",
     "dataset": "analytics_435381614",
     "tablePrefix": "events_",
-    "description": "宿泊施設N - GA4データセット: analytics_435381614",
+    "description": "DC-018_SASEBO HARIO beach walk - GA4データセット: analytics_435381614",
     "enabled": true
   },
   {
-    "name": "宿泊施設 O",
+    "name": "DC-038_Dot Glamping北軽井沢",
     "dataset": "analytics_444585119",
     "tablePrefix": "events_",
-    "description": "宿泊施設O - GA4データセット: analytics_444585119",
+    "description": "DC-038_Dot Glamping北軽井沢 - GA4データセット: analytics_444585119",
     "enabled": true
   },
   {
-    "name": "宿泊施設 P",
+    "name": "DC-049_エメラルドの森",
     "dataset": "analytics_463551992",
     "tablePrefix": "events_",
-    "description": "宿泊施設P - GA4データセット: analytics_463551992",
+    "description": "DC-049_エメラルドの森 - GA4データセット: analytics_463551992",
     "enabled": true
   },
   {
-    "name": "宿泊施設 Q",
+    "name": "DC-054_Stay Kumano Kushimoto",
     "dataset": "analytics_467758700",
     "tablePrefix": "events_",
-    "description": "宿泊施設Q - GA4データセット: analytics_467758700",
+    "description": "DC-054_Stay Kumano Kushimoto - GA4データセット: analytics_467758700",
     "enabled": true
   },
   {
-    "name": "宿泊施設 R",
+    "name": "DC-059_そらすな",
     "dataset": "analytics_473898643",
     "tablePrefix": "events_",
-    "description": "宿泊施設R - GA4データセット: analytics_473898643",
-    "enabled": false
+    "description": "DC-059_そらすな - GA4データセット: analytics_473898643",
+    "enabled": true
   },
   {
-    "name": "宿泊施設 S",
+    "name": "DC-060_海宴坊",
     "dataset": "analytics_489741404",
     "tablePrefix": "events_",
-    "description": "宿泊施設S - GA4データセット: analytics_489741404",
-    "enabled": false
+    "description": "DC-060_海宴坊 - GA4データセット: analytics_489741404",
+    "enabled": true
   },
   {
-    "name": "宿泊施設 T",
+    "name": "DC-062_四季の宿-明翠",
     "dataset": "analytics_489770246",
     "tablePrefix": "events_",
-    "description": "宿泊施設T - GA4データセット: analytics_489770246",
+    "description": "DC-062_四季の宿-明翠 - GA4データセット: analytics_489770246",
+    "enabled": true
+  },
+  {
+    "name": "DC-047_箱根強羅グアムドッグ本店",
+    "dataset": "analytics_471417978",
+    "tablePrefix": "events_",
+    "description": "DC-047_箱根強羅グアムドッグ本店 - GA4データセット: analytics_471417978",
     "enabled": true
   }
 ]
