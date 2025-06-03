@@ -2,7 +2,7 @@
   "name": "ga4-to-sheets",
   "version": "1.0.0",
   "description": "GA4 BigQuery data to Google Sheets automation",
-  "main": "index.js",
+  "main": "cloud-function.js",
   "scripts": {
     "start": "node src/index.js",
     "monthly": "node src/index.js monthly",
