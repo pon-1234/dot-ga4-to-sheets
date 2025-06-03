@@ -7,10 +7,17 @@ const config = require('../config');
  */
 class SheetsService {
   constructor() {
-    this.auth = new google.auth.GoogleAuth({
-      keyFile: config.sheets.credentialsPath,
+    // Cloud FunctionsではkeyFileを使わず、ADC（Application Default Credentials）を使用
+    const authOptions = {
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
+    };
+    
+    // ローカル実行時のみkeyFileを使用
+    if (process.env.NODE_ENV !== 'production' && config.sheets.credentialsPath && require('fs').existsSync(config.sheets.credentialsPath)) {
+      authOptions.keyFile = config.sheets.credentialsPath;
+    }
+    
+    this.auth = new google.auth.GoogleAuth(authOptions);
     this.sheets = google.sheets({ version: 'v4', auth: this.auth });
     this.spreadsheetId = config.sheets.spreadsheetId;
   }

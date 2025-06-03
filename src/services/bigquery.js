@@ -7,10 +7,17 @@ const config = require('../config');
  */
 class BigQueryService {
   constructor() {
-    this.bigquery = new BigQuery({
+    // Cloud FunctionsではkeyFilenameを使わず、ADC（Application Default Credentials）を使用
+    const options = {
       projectId: config.project.id,
-      keyFilename: config.sheets.credentialsPath,
-    });
+    };
+    
+    // ローカル実行時のみkeyFilenameを使用
+    if (process.env.NODE_ENV !== 'production' && config.sheets.credentialsPath && require('fs').existsSync(config.sheets.credentialsPath)) {
+      options.keyFilename = config.sheets.credentialsPath;
+    }
+    
+    this.bigquery = new BigQuery(options);
     this.datasets = config.datasets.filter(ds => ds.enabled);
   }
 
